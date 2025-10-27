@@ -1,0 +1,1036 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/9/2024 8:33:10 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-3A5521F"
+  DTS:CreatorName="DESKTOP-3A5521F\Al-Ahram"
+  DTS:DTSID="{407DB16F-D442-45DE-825D-63F2DB7CF3F9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="customer_address"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{0A4F9621-B025-4F9C-939B-879BD6100723}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\cust_addressTable Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3187CC0B-E954-4D50-82A1-7C7F36A0568A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="cust_addressTable Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\cust_addressTable Task\cust_addressOLAP"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="cust_addressOLAP"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Customer_Adress]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\cust_addressTable Task\cust_addressOLAP.Connections[OleDbConnection]"
+                  connectionManagerID="{84FD2AC2-FC06-4014-BA27-B3621C2BB815}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Gravity_booksOLAP]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].Columns[source_system_code]"
+                      cachedDataType="ui1"
+                      cachedName="source_system_code"
+                      externalMetadataColumnId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].ExternalColumns[source_system_code]"
+                      lineageId="Package\cust_addressTable Task\SourceSystemCode.Outputs[Derived Column Output].Columns[source_system_code]" />
+                    <inputColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].Columns[status_id]"
+                      cachedDataType="i4"
+                      cachedName="status_id"
+                      externalMetadataColumnId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].ExternalColumns[Adress_Status_BK]"
+                      lineageId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].Columns[status_id]" />
+                    <inputColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].Columns[AdressID_SK]"
+                      cachedDataType="i4"
+                      cachedName="AdressID_SK"
+                      externalMetadataColumnId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].ExternalColumns[AddressID_FK]"
+                      lineageId="Package\cust_addressTable Task\FK_Address.Outputs[Lookup Match Output].Columns[AdressID_SK]" />
+                    <inputColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].Columns[CustomerID_SK]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID_SK"
+                      externalMetadataColumnId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID_FK]"
+                      lineageId="Package\cust_addressTable Task\FK_Customer.Outputs[Lookup Match Output].Columns[CustomerID_SK]" />
+                    <inputColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].Columns[address_status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="address_status"
+                      externalMetadataColumnId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].ExternalColumns[Adress_Status]"
+                      lineageId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].Columns[address_status]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].ExternalColumns[Customer_Adress_ID_SK]"
+                      dataType="i4"
+                      name="Customer_Adress_ID_SK" />
+                    <externalMetadataColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].ExternalColumns[Adress_Status_BK]"
+                      dataType="i4"
+                      name="Adress_Status_BK" />
+                    <externalMetadataColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].ExternalColumns[AddressID_FK]"
+                      dataType="i4"
+                      name="AddressID_FK" />
+                    <externalMetadataColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID_FK]"
+                      dataType="i4"
+                      name="CustomerID_FK" />
+                    <externalMetadataColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].ExternalColumns[Adress_Status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Adress_Status" />
+                    <externalMetadataColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].ExternalColumns[start_date]"
+                      dataType="dbTimeStamp"
+                      name="start_date" />
+                    <externalMetadataColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].ExternalColumns[end_date]"
+                      dataType="dbTimeStamp"
+                      name="end_date" />
+                    <externalMetadataColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].ExternalColumns[is_current]"
+                      dataType="ui1"
+                      name="is_current" />
+                    <externalMetadataColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input].ExternalColumns[source_system_code]"
+                      dataType="ui1"
+                      name="source_system_code" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\cust_addressTable Task\cust_addressOLAP.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLAP.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\cust_addressTable Task\cust_addressOLAP.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLAP.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\cust_addressTable Task\cust_addressOLAP.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\cust_addressTable Task\cust_addressOLTP"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="cust_addressOLTP"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT ca.customer_id, ca.address_id , addstatus.status_id, addstatus.address_status
+FROM   customer_address ca INNER JOIN
+customer c ON ca.customer_id = c.customer_id INNER JOIN
+address a ON ca.address_id = a.address_id
+inner join address_status addstatus on addstatus.status_id = ca.status_id</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\cust_addressTable Task\cust_addressOLTP.Connections[OleDbConnection]"
+                  connectionManagerID="{4EB00A64-A82D-4F87-B74D-4447F4257314}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OLTPgravity_books]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      lineageId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      name="customer_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].Columns[address_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].ExternalColumns[address_id]"
+                      lineageId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].Columns[address_id]"
+                      name="address_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].Columns[address_status]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].ExternalColumns[address_status]"
+                      length="30"
+                      lineageId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].Columns[address_status]"
+                      name="address_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].Columns[status_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].ExternalColumns[status_id]"
+                      lineageId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].Columns[status_id]"
+                      name="status_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      dataType="i4"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].ExternalColumns[address_id]"
+                      dataType="i4"
+                      name="address_id" />
+                    <externalMetadataColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].ExternalColumns[address_status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="address_status" />
+                    <externalMetadataColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].ExternalColumns[status_id]"
+                      dataType="i4"
+                      name="status_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      dataType="i4"
+                      lineageId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      name="customer_id" />
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Error Output].Columns[address_id]"
+                      dataType="i4"
+                      lineageId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Error Output].Columns[address_id]"
+                      name="address_id" />
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Error Output].Columns[status_id]"
+                      dataType="i4"
+                      lineageId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Error Output].Columns[status_id]"
+                      name="status_id" />
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Error Output].Columns[address_status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Error Output].Columns[address_status]"
+                      name="address_status" />
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\cust_addressTable Task\FK_Address"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="FK_Address"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Dim_Adress.AdressID_SK, Dim_Adress.AdressID_BK
+FROM     Dim_Adress LEFT JOIN
+                  Dim_Customer_Adress ON Dim_Adress.AdressID_SK = Dim_Customer_Adress.AddressID_FK
+WHERE  (Dim_Adress.is_current = 1)</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT Dim_Adress.AdressID_SK, Dim_Adress.AdressID_BK
+FROM     Dim_Adress LEFT JOIN
+                  Dim_Customer_Adress ON Dim_Adress.AdressID_SK = Dim_Customer_Adress.AddressID_FK
+WHERE  (Dim_Adress.is_current = 1)) [refTable]
+where [refTable].[AdressID_BK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="AdressID_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AdressID_BK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].Columns[address_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\cust_addressTable Task\FK_Address.Connections[OleDbConnection]"
+                  connectionManagerID="{84FD2AC2-FC06-4014-BA27-B3621C2BB815}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Gravity_booksOLAP]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\cust_addressTable Task\FK_Address.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\cust_addressTable Task\FK_Address.Inputs[Lookup Input].Columns[address_id]"
+                      cachedDataType="i4"
+                      cachedName="address_id"
+                      lineageId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].Columns[address_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">AdressID_BK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\cust_addressTable Task\FK_Address.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\cust_addressTable Task\FK_Address.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\FK_Address.Outputs[Lookup Match Output].Columns[AdressID_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\cust_addressTable Task\FK_Address.Outputs[Lookup Match Output].Columns[AdressID_SK]"
+                      name="AdressID_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">AdressID_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\cust_addressTable Task\FK_Address.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\cust_addressTable Task\FK_Address.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\cust_addressTable Task\FK_Address.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\cust_addressTable Task\FK_Address.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\FK_Address.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\cust_addressTable Task\FK_Address.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\FK_Address.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\cust_addressTable Task\FK_Address.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\cust_addressTable Task\FK_Customer"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="FK_Customer"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Dim_Customer.CustomerID_SK, Dim_Customer.CustomerID_BK
+FROM     Dim_Customer_Adress Right JOIN
+                  Dim_Customer ON Dim_Customer_Adress.CustomerID_FK = Dim_Customer.CustomerID_SK
+WHERE  (Dim_Customer.is_current = 1)</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT Dim_Customer.CustomerID_SK, Dim_Customer.CustomerID_BK
+FROM     Dim_Customer_Adress Right JOIN
+                  Dim_Customer ON Dim_Customer_Adress.CustomerID_FK = Dim_Customer.CustomerID_SK
+WHERE  (Dim_Customer.is_current = 1)) [refTable]
+where [refTable].[CustomerID_BK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CustomerID_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CustomerID_BK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].Columns[customer_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\cust_addressTable Task\FK_Customer.Connections[OleDbConnection]"
+                  connectionManagerID="{84FD2AC2-FC06-4014-BA27-B3621C2BB815}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Gravity_booksOLAP]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\cust_addressTable Task\FK_Customer.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\cust_addressTable Task\FK_Customer.Inputs[Lookup Input].Columns[customer_id]"
+                      cachedDataType="i4"
+                      cachedName="customer_id"
+                      lineageId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output].Columns[customer_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CustomerID_BK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\cust_addressTable Task\FK_Customer.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\cust_addressTable Task\FK_Customer.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\FK_Customer.Outputs[Lookup Match Output].Columns[CustomerID_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\cust_addressTable Task\FK_Customer.Outputs[Lookup Match Output].Columns[CustomerID_SK]"
+                      name="CustomerID_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">CustomerID_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\cust_addressTable Task\FK_Customer.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\cust_addressTable Task\FK_Customer.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\cust_addressTable Task\FK_Customer.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\cust_addressTable Task\FK_Customer.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\FK_Customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\cust_addressTable Task\FK_Customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\FK_Customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\cust_addressTable Task\FK_Customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\cust_addressTable Task\SourceSystemCode"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="SourceSystemCode"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\cust_addressTable Task\SourceSystemCode.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\cust_addressTable Task\SourceSystemCode.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\cust_addressTable Task\SourceSystemCode.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\SourceSystemCode.Outputs[Derived Column Output].Columns[source_system_code]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\cust_addressTable Task\SourceSystemCode.Outputs[Derived Column Output].Columns[source_system_code]"
+                      name="source_system_code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_UI1)1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_UI1)1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\cust_addressTable Task\SourceSystemCode.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\cust_addressTable Task\SourceSystemCode.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\SourceSystemCode.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\cust_addressTable Task\SourceSystemCode.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\cust_addressTable Task\SourceSystemCode.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\cust_addressTable Task\SourceSystemCode.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\cust_addressTable Task.Paths[Derived Column Output]"
+              endId="Package\cust_addressTable Task\FK_Customer.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\cust_addressTable Task\SourceSystemCode.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\cust_addressTable Task.Paths[Lookup Match Output]"
+              endId="Package\cust_addressTable Task\FK_Address.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\cust_addressTable Task\FK_Customer.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\cust_addressTable Task.Paths[Lookup Match Output1]"
+              endId="Package\cust_addressTable Task\cust_addressOLAP.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\cust_addressTable Task\FK_Address.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\cust_addressTable Task.Paths[OLE DB Source Output]"
+              endId="Package\cust_addressTable Task\SourceSystemCode.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\cust_addressTable Task\cust_addressOLTP.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="191.2,41.6"
+          Id="Package\cust_addressTable Task"
+          TopLeft="185.000000393816,64.9999999430249" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\cust_addressTable Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\cust_addressTable Task\cust_addressOLTP"
+          TopLeft="90.0000001915864,35.9411764390844" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\cust_addressTable Task\SourceSystemCode"
+          TopLeft="340.714286439577,35.9411764390844" />
+        <EdgeLayout
+          Id="Package\cust_addressTable Task.Paths[OLE DB Source Output]"
+          TopLeft="254.800000191586,56.7411764390844">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="85.9142862479906,0"
+              Start="0,0"
+              End="78.4142862479906,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="78.4142862479906,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\cust_addressTable Task\FK_Customer"
+          TopLeft="452.142858105351,103.235294027157" />
+        <EdgeLayout
+          Id="Package\cust_addressTable Task.Paths[Derived Column Output]"
+          TopLeft="424.714286439577,77.5411764390844">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="97.8285716657738,25.6941175880729"
+              Start="0,0"
+              End="97.8285716657738,18.1941175880729">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.84705879403646" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.84705879403646"
+                    Point2="0,12.8470587940365"
+                    Point3="4,12.8470587940365" />
+                  <mssgle:LineSegment
+                    End="93.8285716657738,12.8470587940365" />
+                  <mssgle:CubicBezierSegment
+                    Point1="93.8285716657738,12.8470587940365"
+                    Point2="97.8285716657738,12.8470587940365"
+                    Point3="97.8285716657738,16.8470587940365" />
+                  <mssgle:LineSegment
+                    End="97.8285716657738,18.1941175880729" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="133.6,41.6"
+          Id="Package\cust_addressTable Task\FK_Address"
+          TopLeft="304.285714933459,179.705882195422" />
+        <EdgeLayout
+          Id="Package\cust_addressTable Task.Paths[Lookup Match Output]"
+          TopLeft="522.542858105351,144.835294027157">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-151.457143171892,34.8705881682646"
+              Start="0,0"
+              End="-151.457143171892,27.3705881682646">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.4352940841323" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.4352940841323"
+                    Point2="0,17.4352940841323"
+                    Point3="-4,17.4352940841323" />
+                  <mssgle:LineSegment
+                    End="-147.457143171892,17.4352940841323" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-147.457143171892,17.4352940841323"
+                    Point2="-151.457143171892,17.4352940841323"
+                    Point3="-151.457143171892,21.4352940841323" />
+                  <mssgle:LineSegment
+                    End="-151.457143171892,27.3705881682646" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-123.919958304696,22.4352940841323,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\cust_addressTable Task\cust_addressOLAP"
+          TopLeft="72.1428572964304,177.411764550374" />
+        <EdgeLayout
+          Id="Package\cust_addressTable Task.Paths[Lookup Match Output1]"
+          TopLeft="304.285714933459,199.358823372898">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-67.3428576370283,0"
+              Start="0,0"
+              End="-59.8428576370283,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-59.8428576370283,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-78.1128155372641,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\cust_addressTable Task\cust_addressOLTP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\cust_addressTable Task\FK_Customer">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\cust_addressTable Task\FK_Address">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\cust_addressTable Task\cust_addressOLAP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

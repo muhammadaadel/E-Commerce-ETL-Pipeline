@@ -1,0 +1,1426 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/9/2024 8:53:24 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-3A5521F"
+  DTS:CreatorName="DESKTOP-3A5521F\Al-Ahram"
+  DTS:DTSID="{5CEAB98D-2E94-418F-9C91-41D454FB87F0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="SalesFact"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{B671FAED-8903-40B7-A014-7776EB94F0DE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sales Fact Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B1B522D6-BC8F-41D8-A7A7-F96ABC53C292}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sales Fact Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Sales Fact Task\FactSalesOLAP"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="FactSalesOLAP"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fact_Sales]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Sales Fact Task\FactSalesOLAP.Connections[OleDbConnection]"
+                  connectionManagerID="{84FD2AC2-FC06-4014-BA27-B3621C2BB815}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Gravity_booksOLAP]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].Columns[price]"
+                      cachedDataType="numeric"
+                      cachedName="price"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[price]" />
+                    <inputColumn
+                      refId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].Columns[BookID_SK]"
+                      cachedDataType="i4"
+                      cachedName="BookID_SK"
+                      externalMetadataColumnId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].ExternalColumns[BookID_FK]"
+                      lineageId="Package\Sales Fact Task\FK_Book.Outputs[Lookup Match Output].Columns[BookID_SK]" />
+                    <inputColumn
+                      refId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].Columns[CustomerID_SK]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID_SK"
+                      externalMetadataColumnId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID_FK]"
+                      lineageId="Package\Sales Fact Task\FK_Customer.Outputs[Lookup Match Output].Columns[CustomerID_SK]" />
+                    <inputColumn
+                      refId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].Columns[DateSK]"
+                      cachedDataType="i4"
+                      cachedName="DateSK"
+                      externalMetadataColumnId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].ExternalColumns[DateID_FK]"
+                      lineageId="Package\Sales Fact Task\FK_Date.Outputs[Lookup Match Output].Columns[DateSK]" />
+                    <inputColumn
+                      refId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].Columns[TimeSK]"
+                      cachedDataType="i4"
+                      cachedName="TimeSK"
+                      externalMetadataColumnId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].ExternalColumns[TimeID_FK]"
+                      lineageId="Package\Sales Fact Task\FK_Time.Outputs[Lookup Match Output].Columns[TimeSK]" />
+                    <inputColumn
+                      refId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].Columns[order_id]"
+                      cachedDataType="i4"
+                      cachedName="order_id"
+                      externalMetadataColumnId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].ExternalColumns[OrderID_BK]"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[order_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].ExternalColumns[SalesID_SK]"
+                      dataType="i4"
+                      name="SalesID_SK" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].ExternalColumns[BookID_FK]"
+                      dataType="i4"
+                      name="BookID_FK" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID_FK]"
+                      dataType="i4"
+                      name="CustomerID_FK" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].ExternalColumns[DateID_FK]"
+                      dataType="i4"
+                      name="DateID_FK" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].ExternalColumns[TimeID_FK]"
+                      dataType="i4"
+                      name="TimeID_FK" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].ExternalColumns[OrderID_BK]"
+                      dataType="i4"
+                      name="OrderID_BK" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                      dataType="numeric"
+                      name="Price"
+                      precision="10"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input].ExternalColumns[Created_at]"
+                      dataType="dbTimeStamp"
+                      name="Created_at" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales Fact Task\FactSalesOLAP.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Fact Task\FactSalesOLAP.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales Fact Task\FactSalesOLAP.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales Fact Task\FactSalesOLAP.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales Fact Task\FactSalesOLAP.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sales Fact Task\FK_Book"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="FK_Book"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Dim_Book.BookID_SK, Dim_Book.BookID_BK
+FROM     Fact_Sales Right JOIN
+                  Dim_Book ON Fact_Sales.BookID_FK = Dim_Book.BookID_SK
+WHERE  (Dim_Book.is_current = 1)</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT Dim_Book.BookID_SK, Dim_Book.BookID_BK
+FROM     Fact_Sales Right JOIN
+                  Dim_Book ON Fact_Sales.BookID_FK = Dim_Book.BookID_SK
+WHERE  (Dim_Book.is_current = 1)) [refTable]
+where [refTable].[BookID_BK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="BookID_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="BookID_BK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[book_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Sales Fact Task\FK_Book.Connections[OleDbConnection]"
+                  connectionManagerID="{84FD2AC2-FC06-4014-BA27-B3621C2BB815}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Gravity_booksOLAP]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Sales Fact Task\FK_Book.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sales Fact Task\FK_Book.Inputs[Lookup Input].Columns[book_id]"
+                      cachedDataType="i4"
+                      cachedName="book_id"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[book_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">BookID_BK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales Fact Task\FK_Book.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Sales Fact Task\FK_Book.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Fact Task\FK_Book.Outputs[Lookup Match Output].Columns[BookID_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Sales Fact Task\FK_Book.Outputs[Lookup Match Output].Columns[BookID_SK]"
+                      name="BookID_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">BookID_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales Fact Task\FK_Book.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Sales Fact Task\FK_Book.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales Fact Task\FK_Book.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Sales Fact Task\FK_Book.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Fact Task\FK_Book.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales Fact Task\FK_Book.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales Fact Task\FK_Book.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales Fact Task\FK_Book.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sales Fact Task\FK_Customer"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="FK_Customer"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Dim_Customer.CustomerID_BK, Dim_Customer.CustomerID_SK
+FROM     Dim_Customer LEFT JOIN
+                  Fact_Sales ON Dim_Customer.CustomerID_SK = Fact_Sales.CustomerID_FK
+WHERE  (Dim_Customer.is_current = 1)</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT Dim_Customer.CustomerID_BK, Dim_Customer.CustomerID_SK
+FROM     Dim_Customer LEFT JOIN
+                  Fact_Sales ON Dim_Customer.CustomerID_SK = Fact_Sales.CustomerID_FK
+WHERE  (Dim_Customer.is_current = 1)) [refTable]
+where [refTable].[CustomerID_BK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CustomerID_BK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CustomerID_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[customer_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Sales Fact Task\FK_Customer.Connections[OleDbConnection]"
+                  connectionManagerID="{84FD2AC2-FC06-4014-BA27-B3621C2BB815}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Gravity_booksOLAP]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Sales Fact Task\FK_Customer.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sales Fact Task\FK_Customer.Inputs[Lookup Input].Columns[customer_id]"
+                      cachedDataType="i4"
+                      cachedName="customer_id"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[customer_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CustomerID_BK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales Fact Task\FK_Customer.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Sales Fact Task\FK_Customer.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Fact Task\FK_Customer.Outputs[Lookup Match Output].Columns[CustomerID_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Sales Fact Task\FK_Customer.Outputs[Lookup Match Output].Columns[CustomerID_SK]"
+                      name="CustomerID_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">CustomerID_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales Fact Task\FK_Customer.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Sales Fact Task\FK_Customer.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales Fact Task\FK_Customer.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Sales Fact Task\FK_Customer.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Fact Task\FK_Customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales Fact Task\FK_Customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales Fact Task\FK_Customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales Fact Task\FK_Customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sales Fact Task\FK_Date"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="FK_Date"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DimDate.DateSK, DimDate.[Date]
+FROM     DimDate LEFT JOIN
+                  Fact_Sales ON DimDate.DateSK = Fact_Sales.DateID_FK</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT DimDate.DateSK, DimDate.[Date]
+FROM     DimDate LEFT JOIN
+                  Fact_Sales ON DimDate.DateSK = Fact_Sales.DateID_FK) [refTable]
+where [refTable].[Date] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DateSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[order_date]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Sales Fact Task\FK_Date.Connections[OleDbConnection]"
+                  connectionManagerID="{84FD2AC2-FC06-4014-BA27-B3621C2BB815}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Gravity_booksOLAP]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Sales Fact Task\FK_Date.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sales Fact Task\FK_Date.Inputs[Lookup Input].Columns[order_date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="order_date"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[order_date]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Date</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales Fact Task\FK_Date.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Sales Fact Task\FK_Date.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Fact Task\FK_Date.Outputs[Lookup Match Output].Columns[DateSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Sales Fact Task\FK_Date.Outputs[Lookup Match Output].Columns[DateSK]"
+                      name="DateSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DateSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales Fact Task\FK_Date.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Sales Fact Task\FK_Date.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales Fact Task\FK_Date.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Sales Fact Task\FK_Date.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Fact Task\FK_Date.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales Fact Task\FK_Date.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales Fact Task\FK_Date.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales Fact Task\FK_Date.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sales Fact Task\FK_Time"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="FK_Time"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DimTime.TimeSK, DimTime.[Time]
+FROM     Fact_Sales RIGHT OUTER JOIN
+                  DimTime ON Fact_Sales.TimeID_FK = DimTime.TimeSK</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT DimTime.TimeSK, DimTime.[Time]
+FROM     Fact_Sales RIGHT OUTER JOIN
+                  DimTime ON Fact_Sales.TimeID_FK = DimTime.TimeSK) [refTable]
+where [refTable].[Time] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="TimeSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Time" dataType="DT_WSTR" length="8" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[order_time]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Sales Fact Task\FK_Time.Connections[OleDbConnection]"
+                  connectionManagerID="{84FD2AC2-FC06-4014-BA27-B3621C2BB815}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Gravity_booksOLAP]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Sales Fact Task\FK_Time.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sales Fact Task\FK_Time.Inputs[Lookup Input].Columns[order_time]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="order_time"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[order_time]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Time</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales Fact Task\FK_Time.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Sales Fact Task\FK_Time.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Fact Task\FK_Time.Outputs[Lookup Match Output].Columns[TimeSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Sales Fact Task\FK_Time.Outputs[Lookup Match Output].Columns[TimeSK]"
+                      name="TimeSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">TimeSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales Fact Task\FK_Time.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Sales Fact Task\FK_Time.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales Fact Task\FK_Time.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Sales Fact Task\FK_Time.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Fact Task\FK_Time.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales Fact Task\FK_Time.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales Fact Task\FK_Time.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales Fact Task\FK_Time.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sales Fact Task\SalesOLTP"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SalesOLTP"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  ol.order_id ,ol.book_id ,co.customer_id,
+cast(co.order_date as date) as order_date, cast(co.order_date as time(0)) as order_time
+,ol.price
+from order_line ol join cust_order co
+on ol.order_id = co.order_id</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Sales Fact Task\SalesOLTP.Connections[OleDbConnection]"
+                  connectionManagerID="{4EB00A64-A82D-4F87-B74D-4447F4257314}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OLTPgravity_books]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[order_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].ExternalColumns[order_id]"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[order_id]"
+                      name="order_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[book_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].ExternalColumns[book_id]"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[book_id]"
+                      name="book_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      name="customer_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[order_date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].ExternalColumns[order_date]"
+                      length="10"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[order_date]"
+                      name="order_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[order_time]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].ExternalColumns[order_time]"
+                      length="16"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[order_time]"
+                      name="order_time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[price]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].ExternalColumns[price]"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].Columns[price]"
+                      name="price"
+                      precision="5"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].ExternalColumns[order_id]"
+                      dataType="i4"
+                      name="order_id" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].ExternalColumns[book_id]"
+                      dataType="i4"
+                      name="book_id" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      dataType="i4"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].ExternalColumns[order_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="order_date" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].ExternalColumns[order_time]"
+                      dataType="wstr"
+                      length="8"
+                      name="order_time" />
+                    <externalMetadataColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output].ExternalColumns[price]"
+                      dataType="numeric"
+                      name="price"
+                      precision="5"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Error Output].Columns[order_id]"
+                      dataType="i4"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Error Output].Columns[order_id]"
+                      name="order_id" />
+                    <outputColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Error Output].Columns[book_id]"
+                      dataType="i4"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Error Output].Columns[book_id]"
+                      name="book_id" />
+                    <outputColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      dataType="i4"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      name="customer_id" />
+                    <outputColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Error Output].Columns[order_date]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Error Output].Columns[order_date]"
+                      name="order_date" />
+                    <outputColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Error Output].Columns[order_time]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Error Output].Columns[order_time]"
+                      name="order_time" />
+                    <outputColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Error Output].Columns[price]"
+                      dataType="numeric"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Error Output].Columns[price]"
+                      name="price"
+                      precision="5"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Sales Fact Task.Paths[Lookup Match Output]"
+              endId="Package\Sales Fact Task\FK_Book.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Sales Fact Task\FK_Customer.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Sales Fact Task.Paths[Lookup Match Output1]"
+              endId="Package\Sales Fact Task\FK_Date.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Sales Fact Task\FK_Book.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Sales Fact Task.Paths[Lookup Match Output2]"
+              endId="Package\Sales Fact Task\FK_Time.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Sales Fact Task\FK_Date.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Sales Fact Task.Paths[Lookup Match Output3]"
+              endId="Package\Sales Fact Task\FactSalesOLAP.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Sales Fact Task\FK_Time.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Sales Fact Task.Paths[OLE DB Source Output]"
+              endId="Package\Sales Fact Task\FK_Customer.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Sales Fact Task\SalesOLTP.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Sales Fact Task"
+          TopLeft="85.0000001809427,50.4705881910547" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sales Fact Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="128,41.6"
+          Id="Package\Sales Fact Task\SalesOLTP"
+          TopLeft="113.571428813192,20.6470588054315" />
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\Sales Fact Task\FK_Customer"
+          TopLeft="300.714286354428,74.1764705232168" />
+        <EdgeLayout
+          Id="Package\Sales Fact Task.Paths[OLE DB Source Output]"
+          TopLeft="241.571428813192,41.4470588054315">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="59.1428575412353,53.5294117177853"
+              Start="0,0"
+              End="51.6428575412353,53.5294117177853">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="25.5714287706176,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.5714287706176,0"
+                    Point2="29.5714287706176,0"
+                    Point3="29.5714287706176,4" />
+                  <mssgle:LineSegment
+                    End="29.5714287706176,49.5294117177853" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.5714287706176,49.5294117177853"
+                    Point2="29.5714287706176,53.5294117177853"
+                    Point3="33.5714287706176,53.5294117177853" />
+                  <mssgle:LineSegment
+                    End="51.6428575412353,53.5294117177853" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="119.2,41.6"
+          Id="Package\Sales Fact Task\FK_Book"
+          TopLeft="445.714286663094,136.117646939511" />
+        <EdgeLayout
+          Id="Package\Sales Fact Task.Paths[Lookup Match Output]"
+          TopLeft="441.514286354428,94.9764705232168">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="63.8000003086668,41.1411764162944"
+              Start="0,0"
+              End="63.8000003086668,33.6411764162944">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="59.8000003086668,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="59.8000003086668,0"
+                    Point2="63.8000003086668,0"
+                    Point3="63.8000003086668,4" />
+                  <mssgle:LineSegment
+                    End="63.8000003086668,33.6411764162944" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="15.6086135899168,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="118.4,41.6"
+          Id="Package\Sales Fact Task\FK_Date"
+          TopLeft="311.428572091521,181.235293958787" />
+        <EdgeLayout
+          Id="Package\Sales Fact Task.Paths[Lookup Match Output1]"
+          TopLeft="445.714286663094,156.917646939511">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-75.0857145715732,24.3176470192761"
+              Start="0,0"
+              End="-75.0857145715732,16.8176470192761">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-71.0857145715732,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-71.0857145715732,0"
+                    Point2="-75.0857145715732,0"
+                    Point3="-75.0857145715732,4" />
+                  <mssgle:LineSegment
+                    End="-75.0857145715732,16.8176470192761" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-123.277101290323,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="119.2,41.6"
+          Id="Package\Sales Fact Task\FK_Time"
+          TopLeft="310.000000659909,241.647058611716" />
+        <EdgeLayout
+          Id="Package\Sales Fact Task.Paths[Lookup Match Output2]"
+          TopLeft="429.828572091521,202.035293958787">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-0.628571431612613,60.411764652929"
+              Start="0,0"
+              End="6.87142856838739,60.411764652929">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="18.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18.5,0"
+                    Point2="22.5,0"
+                    Point3="22.5,4" />
+                  <mssgle:LineSegment
+                    End="22.5,56.411764652929" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22.5,56.411764652929"
+                    Point2="22.5,60.411764652929"
+                    Point3="18.5,60.411764652929" />
+                  <mssgle:LineSegment
+                    End="6.87142856838739,60.411764652929" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-25.69138671875,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\Sales Fact Task\FactSalesOLAP"
+          TopLeft="105.714285939324,240.447058634506" />
+        <EdgeLayout
+          Id="Package\Sales Fact Task.Paths[Lookup Match Output3]"
+          TopLeft="310.000000659909,261.847058623111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-57.0857147205849,0"
+              Start="0,0"
+              End="-49.5857147205849,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-49.5857147205849,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-72.9842440790424,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales Fact Task\SalesOLTP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales Fact Task\FK_Customer">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales Fact Task\FK_Book">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales Fact Task\FK_Date">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales Fact Task\FK_Time">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales Fact Task\FactSalesOLAP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

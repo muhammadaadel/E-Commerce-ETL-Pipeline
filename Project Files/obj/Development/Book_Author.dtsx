@@ -1,0 +1,971 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/9/2024 6:55:19 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-3A5521F"
+  DTS:CreatorName="DESKTOP-3A5521F\Al-Ahram"
+  DTS:DTSID="{98AE6789-1992-4F64-A404-8B91CAD4E858}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Book_Author"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{603F160E-2D22-4064-99AC-92C35FAA8691}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Book_AuthorTable Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{CD4DA5AC-05DA-46AD-B39D-B234A16E2B8E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Book_AuthorTable Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Book_AuthorTable Task\BankAuthorOLAP"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="BankAuthorOLAP"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Author_Book]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Book_AuthorTable Task\BankAuthorOLAP.Connections[OleDbConnection]"
+                  connectionManagerID="{84FD2AC2-FC06-4014-BA27-B3621C2BB815}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Gravity_booksOLAP]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Book_AuthorTable Task\BankAuthorOLAP.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLAP.Inputs[OLE DB Destination Input].Columns[source_system_code]"
+                      cachedDataType="ui1"
+                      cachedName="source_system_code"
+                      externalMetadataColumnId="Package\Book_AuthorTable Task\BankAuthorOLAP.Inputs[OLE DB Destination Input].ExternalColumns[source_system_code]"
+                      lineageId="Package\Book_AuthorTable Task\SourceSystemCode.Outputs[Derived Column Output].Columns[source_system_code]" />
+                    <inputColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLAP.Inputs[OLE DB Destination Input].Columns[AuthorID_SK]"
+                      cachedDataType="i4"
+                      cachedName="AuthorID_SK"
+                      externalMetadataColumnId="Package\Book_AuthorTable Task\BankAuthorOLAP.Inputs[OLE DB Destination Input].ExternalColumns[AuthorID_FK]"
+                      lineageId="Package\Book_AuthorTable Task\FK_Author.Outputs[Lookup Match Output].Columns[AuthorID_SK]" />
+                    <inputColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLAP.Inputs[OLE DB Destination Input].Columns[BookID_SK]"
+                      cachedDataType="i4"
+                      cachedName="BookID_SK"
+                      externalMetadataColumnId="Package\Book_AuthorTable Task\BankAuthorOLAP.Inputs[OLE DB Destination Input].ExternalColumns[BookID_FK]"
+                      lineageId="Package\Book_AuthorTable Task\FK_Book.Outputs[Lookup Match Output].Columns[BookID_SK]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLAP.Inputs[OLE DB Destination Input].ExternalColumns[Author_Book_ID_SK]"
+                      dataType="i4"
+                      name="Author_Book_ID_SK" />
+                    <externalMetadataColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLAP.Inputs[OLE DB Destination Input].ExternalColumns[AuthorID_FK]"
+                      dataType="i4"
+                      name="AuthorID_FK" />
+                    <externalMetadataColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLAP.Inputs[OLE DB Destination Input].ExternalColumns[BookID_FK]"
+                      dataType="i4"
+                      name="BookID_FK" />
+                    <externalMetadataColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLAP.Inputs[OLE DB Destination Input].ExternalColumns[start_date]"
+                      dataType="dbTimeStamp"
+                      name="start_date" />
+                    <externalMetadataColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLAP.Inputs[OLE DB Destination Input].ExternalColumns[end_date]"
+                      dataType="dbTimeStamp"
+                      name="end_date" />
+                    <externalMetadataColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLAP.Inputs[OLE DB Destination Input].ExternalColumns[is_current]"
+                      dataType="ui1"
+                      name="is_current" />
+                    <externalMetadataColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLAP.Inputs[OLE DB Destination Input].ExternalColumns[source_system_code]"
+                      dataType="ui1"
+                      name="source_system_code" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Book_AuthorTable Task\BankAuthorOLAP.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Book_AuthorTable Task\BankAuthorOLAP.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLAP.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Book_AuthorTable Task\BankAuthorOLAP.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLAP.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Book_AuthorTable Task\BankAuthorOLAP.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Book_AuthorTable Task\BankAuthorOLTP"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="BankAuthorOLTP"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[book_author]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Book_AuthorTable Task\BankAuthorOLTP.Connections[OleDbConnection]"
+                  connectionManagerID="{4EB00A64-A82D-4F87-B74D-4447F4257314}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OLTPgravity_books]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Output].Columns[book_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Output].ExternalColumns[book_id]"
+                      lineageId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Output].Columns[book_id]"
+                      name="book_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Output].Columns[author_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Output].ExternalColumns[author_id]"
+                      lineageId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Output].Columns[author_id]"
+                      name="author_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Output].ExternalColumns[book_id]"
+                      dataType="i4"
+                      name="book_id" />
+                    <externalMetadataColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Output].ExternalColumns[author_id]"
+                      dataType="i4"
+                      name="author_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Error Output].Columns[book_id]"
+                      dataType="i4"
+                      lineageId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Error Output].Columns[book_id]"
+                      name="book_id" />
+                    <outputColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Error Output].Columns[author_id]"
+                      dataType="i4"
+                      lineageId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Error Output].Columns[author_id]"
+                      name="author_id" />
+                    <outputColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Book_AuthorTable Task\FK_Author"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="FK_Author"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Dim_Author.AuthorID_SK, Dim_Author.AuthorID_BK
+FROM     Dim_Author LEFT JOIN
+                  Dim_Author_Book ON Dim_Author.AuthorID_SK = Dim_Author_Book.AuthorID_FK
+WHERE  (Dim_Author.is_current = 1)</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT Dim_Author.AuthorID_SK, Dim_Author.AuthorID_BK
+FROM     Dim_Author LEFT JOIN
+                  Dim_Author_Book ON Dim_Author.AuthorID_SK = Dim_Author_Book.AuthorID_FK
+WHERE  (Dim_Author.is_current = 1)) [refTable]
+where [refTable].[AuthorID_BK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="AuthorID_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AuthorID_BK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Output].Columns[author_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Book_AuthorTable Task\FK_Author.Connections[OleDbConnection]"
+                  connectionManagerID="{84FD2AC2-FC06-4014-BA27-B3621C2BB815}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Gravity_booksOLAP]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Book_AuthorTable Task\FK_Author.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Book_AuthorTable Task\FK_Author.Inputs[Lookup Input].Columns[author_id]"
+                      cachedDataType="i4"
+                      cachedName="author_id"
+                      lineageId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Output].Columns[author_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">AuthorID_BK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Book_AuthorTable Task\FK_Author.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Book_AuthorTable Task\FK_Author.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Book_AuthorTable Task\FK_Author.Outputs[Lookup Match Output].Columns[AuthorID_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Book_AuthorTable Task\FK_Author.Outputs[Lookup Match Output].Columns[AuthorID_SK]"
+                      name="AuthorID_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">AuthorID_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Book_AuthorTable Task\FK_Author.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Book_AuthorTable Task\FK_Author.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Book_AuthorTable Task\FK_Author.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Book_AuthorTable Task\FK_Author.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Book_AuthorTable Task\FK_Author.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Book_AuthorTable Task\FK_Author.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Book_AuthorTable Task\FK_Author.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Book_AuthorTable Task\FK_Author.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Book_AuthorTable Task\FK_Book"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="FK_Book"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Dim_Book.BookID_SK, Dim_Book.BookID_BK
+FROM     Dim_Author_Book Right JOIN
+                  Dim_Book ON Dim_Author_Book.BookID_FK = Dim_Book.BookID_SK
+WHERE  (Dim_Book.is_current = 1)</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT Dim_Book.BookID_SK, Dim_Book.BookID_BK
+FROM     Dim_Author_Book Right JOIN
+                  Dim_Book ON Dim_Author_Book.BookID_FK = Dim_Book.BookID_SK
+WHERE  (Dim_Book.is_current = 1)) [refTable]
+where [refTable].[BookID_BK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="BookID_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="BookID_BK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Output].Columns[book_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Book_AuthorTable Task\FK_Book.Connections[OleDbConnection]"
+                  connectionManagerID="{84FD2AC2-FC06-4014-BA27-B3621C2BB815}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Gravity_booksOLAP]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Book_AuthorTable Task\FK_Book.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Book_AuthorTable Task\FK_Book.Inputs[Lookup Input].Columns[book_id]"
+                      cachedDataType="i4"
+                      cachedName="book_id"
+                      lineageId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Output].Columns[book_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">BookID_BK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Book_AuthorTable Task\FK_Book.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Book_AuthorTable Task\FK_Book.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Book_AuthorTable Task\FK_Book.Outputs[Lookup Match Output].Columns[BookID_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Book_AuthorTable Task\FK_Book.Outputs[Lookup Match Output].Columns[BookID_SK]"
+                      name="BookID_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">BookID_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Book_AuthorTable Task\FK_Book.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Book_AuthorTable Task\FK_Book.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Book_AuthorTable Task\FK_Book.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Book_AuthorTable Task\FK_Book.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Book_AuthorTable Task\FK_Book.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Book_AuthorTable Task\FK_Book.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Book_AuthorTable Task\FK_Book.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Book_AuthorTable Task\FK_Book.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Book_AuthorTable Task\SourceSystemCode"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="SourceSystemCode"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Book_AuthorTable Task\SourceSystemCode.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Book_AuthorTable Task\SourceSystemCode.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Book_AuthorTable Task\SourceSystemCode.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Book_AuthorTable Task\SourceSystemCode.Outputs[Derived Column Output].Columns[source_system_code]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Book_AuthorTable Task\SourceSystemCode.Outputs[Derived Column Output].Columns[source_system_code]"
+                      name="source_system_code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_UI1)1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_UI1)1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Book_AuthorTable Task\SourceSystemCode.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Book_AuthorTable Task\SourceSystemCode.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Book_AuthorTable Task\SourceSystemCode.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Book_AuthorTable Task\SourceSystemCode.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Book_AuthorTable Task\SourceSystemCode.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Book_AuthorTable Task\SourceSystemCode.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Book_AuthorTable Task.Paths[Derived Column Output]"
+              endId="Package\Book_AuthorTable Task\FK_Author.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\Book_AuthorTable Task\SourceSystemCode.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Book_AuthorTable Task.Paths[Lookup Match Output]"
+              endId="Package\Book_AuthorTable Task\FK_Book.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Book_AuthorTable Task\FK_Author.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Book_AuthorTable Task.Paths[Lookup Match Output1]"
+              endId="Package\Book_AuthorTable Task\BankAuthorOLAP.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Book_AuthorTable Task\FK_Book.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Book_AuthorTable Task.Paths[OLE DB Source Output]"
+              endId="Package\Book_AuthorTable Task\SourceSystemCode.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Book_AuthorTable Task\BankAuthorOLTP.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="189.6,41.6"
+          Id="Package\Book_AuthorTable Task"
+          TopLeft="192.142857551879,85.6470587484564" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Book_AuthorTable Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\Book_AuthorTable Task\BankAuthorOLTP"
+          TopLeft="147.857143171892,32.1176470306712" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\Book_AuthorTable Task\SourceSystemCode"
+          TopLeft="352.142857892477,30.5882352673059" />
+        <EdgeLayout
+          Id="Package\Book_AuthorTable Task.Paths[OLE DB Source Output]"
+          TopLeft="306.257143171892,52.1529411489885">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="45.8857147205848,0"
+              Start="0,0"
+              End="38.3857147205848,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="38.3857147205848,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="127.2,41.6"
+          Id="Package\Book_AuthorTable Task\FK_Author"
+          TopLeft="465.714286705669,119.294117542493" />
+        <EdgeLayout
+          Id="Package\Book_AuthorTable Task.Paths[Derived Column Output]"
+          TopLeft="436.142857892477,72.1882352673059">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="93.1714288131924,47.105882275187"
+              Start="0,0"
+              End="93.1714288131924,39.605882275187">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5529411375935" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.5529411375935"
+                    Point2="0,23.5529411375935"
+                    Point3="4,23.5529411375935" />
+                  <mssgle:LineSegment
+                    End="89.1714288131924,23.5529411375935" />
+                  <mssgle:CubicBezierSegment
+                    Point1="89.1714288131924,23.5529411375935"
+                    Point2="93.1714288131924,23.5529411375935"
+                    Point3="93.1714288131924,27.5529411375935" />
+                  <mssgle:LineSegment
+                    End="93.1714288131924,39.605882275187" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="119.2,41.6"
+          Id="Package\Book_AuthorTable Task\FK_Book"
+          TopLeft="480.7142867376,196.52941159244" />
+        <EdgeLayout
+          Id="Package\Book_AuthorTable Task.Paths[Lookup Match Output]"
+          TopLeft="529.314286705669,160.894117542493">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.000000031931,35.6352940499473"
+              Start="0,0"
+              End="11.000000031931,28.1352940499473">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.8176470249737" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.8176470249737"
+                    Point2="0,17.8176470249737"
+                    Point3="4,17.8176470249737" />
+                  <mssgle:LineSegment
+                    End="7.00000003193099,17.8176470249737" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.00000003193099,17.8176470249737"
+                    Point2="11.000000031931,17.8176470249737"
+                    Point3="11.000000031931,21.8176470249737" />
+                  <mssgle:LineSegment
+                    End="11.000000031931,28.1352940499473" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-42.6913867027845,22.8176470249737,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\Book_AuthorTable Task\BankAuthorOLAP"
+          TopLeft="215.000000457679,192.705882184027" />
+        <EdgeLayout
+          Id="Package\Book_AuthorTable Task.Paths[Lookup Match Output1]"
+          TopLeft="480.7142867376,215.417646888234">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-107.314286279922,0"
+              Start="0,0"
+              End="-99.8142862799216,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-99.8142862799216,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-98.0985298587108,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Book_AuthorTable Task\BankAuthorOLTP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Book_AuthorTable Task\FK_Author">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Book_AuthorTable Task\FK_Book">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Book_AuthorTable Task\BankAuthorOLAP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

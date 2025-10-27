@@ -1,0 +1,1413 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/9/2024 2:34:54 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-3A5521F"
+  DTS:CreatorName="DESKTOP-3A5521F\Al-Ahram"
+  DTS:DTSID="{1E5ABA1A-4279-4C32-8784-978DB22EF1AF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Author"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{6FCC2A65-3B68-428A-8712-E5649424A2B4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\AuthorTable Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F7A76EC0-89B9-4C4D-95FE-45BC346A0311}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="AuthorTable Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\AuthorTable Task\AuthorOLTP Table"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="AuthorOLTP Table"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[author]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\AuthorTable Task\AuthorOLTP Table.Connections[OleDbConnection]"
+                  connectionManagerID="{4EB00A64-A82D-4F87-B74D-4447F4257314}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OLTPgravity_books]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Output].Columns[author_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Output].ExternalColumns[author_id]"
+                      lineageId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Output].Columns[author_id]"
+                      name="author_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Output].Columns[author_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Output].ExternalColumns[author_name]"
+                      length="400"
+                      lineageId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Output].Columns[author_name]"
+                      name="author_name"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Output].ExternalColumns[author_id]"
+                      dataType="i4"
+                      name="author_id" />
+                    <externalMetadataColumn
+                      refId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Output].ExternalColumns[author_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="400"
+                      name="author_name" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Error Output].Columns[author_id]"
+                      dataType="i4"
+                      lineageId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Error Output].Columns[author_id]"
+                      name="author_id" />
+                    <outputColumn
+                      refId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Error Output].Columns[author_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="400"
+                      lineageId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Error Output].Columns[author_name]"
+                      name="author_name" />
+                    <outputColumn
+                      refId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\AuthorTable Task\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\AuthorTable Task\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\AuthorTable Task\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\AuthorTable Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\AuthorTable Task\Derived Column.Outputs[Derived Column Output].Columns[end_date]"
+                      dataType="dbTimeStamp"
+                      description="end_date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\AuthorTable Task\Derived Column.Outputs[Derived Column Output].Columns[end_date]"
+                      name="end_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\AuthorTable Task\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\AuthorTable Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\AuthorTable Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\AuthorTable Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\AuthorTable Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\AuthorTable Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\AuthorTable Task\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\AuthorTable Task\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\AuthorTable Task\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\AuthorTable Task\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\AuthorTable Task\Derived Column 1.Outputs[Derived Column Output].Columns[start_date]"
+                      dataType="dbTimeStamp"
+                      description="start_date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\AuthorTable Task\Derived Column 1.Outputs[Derived Column Output].Columns[start_date]"
+                      name="start_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\AuthorTable Task\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\AuthorTable Task\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\AuthorTable Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\AuthorTable Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\AuthorTable Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\AuthorTable Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\AuthorTable Task\Insert Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Author]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\AuthorTable Task\Insert Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{84FD2AC2-FC06-4014-BA27-B3621C2BB815}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Gravity_booksOLAP]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input].Columns[author_id]"
+                      cachedDataType="i4"
+                      cachedName="author_id"
+                      externalMetadataColumnId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AuthorID_BK]"
+                      lineageId="Package\AuthorTable Task\Union All.Outputs[Union All Output 1].Columns[author_id]" />
+                    <inputColumn
+                      refId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input].Columns[author_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="400"
+                      cachedName="author_name"
+                      externalMetadataColumnId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Author_Name]"
+                      lineageId="Package\AuthorTable Task\Union All.Outputs[Union All Output 1].Columns[author_name]" />
+                    <inputColumn
+                      refId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input].Columns[start_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="start_date"
+                      externalMetadataColumnId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[start_date]"
+                      lineageId="Package\AuthorTable Task\Derived Column 1.Outputs[Derived Column Output].Columns[start_date]" />
+                    <inputColumn
+                      refId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input].Columns[source_system_code]"
+                      cachedDataType="ui1"
+                      cachedName="source_system_code"
+                      externalMetadataColumnId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[source_system_code]"
+                      lineageId="Package\AuthorTable Task\Union All.Outputs[Union All Output 1].Columns[source_system_code]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AuthorID_SK]"
+                      dataType="i4"
+                      name="AuthorID_SK" />
+                    <externalMetadataColumn
+                      refId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AuthorID_BK]"
+                      dataType="i4"
+                      name="AuthorID_BK" />
+                    <externalMetadataColumn
+                      refId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Author_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="500"
+                      name="Author_Name" />
+                    <externalMetadataColumn
+                      refId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[start_date]"
+                      dataType="dbTimeStamp"
+                      name="start_date" />
+                    <externalMetadataColumn
+                      refId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[end_date]"
+                      dataType="dbTimeStamp"
+                      name="end_date" />
+                    <externalMetadataColumn
+                      refId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_current]"
+                      dataType="ui1"
+                      name="is_current" />
+                    <externalMetadataColumn
+                      refId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[source_system_code]"
+                      dataType="ui1"
+                      name="source_system_code" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\AuthorTable Task\Insert Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\AuthorTable Task\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\AuthorTable Task\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\AuthorTable Task\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\AuthorTable Task\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\AuthorTable Task\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Author] SET [end_date] = ? WHERE [AuthorID_BK] = ? AND [end_date] IS NULL</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\AuthorTable Task\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{84FD2AC2-FC06-4014-BA27-B3621C2BB815}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Gravity_booksOLAP]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\AuthorTable Task\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\AuthorTable Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[author_id]"
+                      cachedDataType="i4"
+                      cachedName="author_id"
+                      externalMetadataColumnId="Package\AuthorTable Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Output].Columns[author_id]" />
+                    <inputColumn
+                      refId="Package\AuthorTable Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[end_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="end_date"
+                      externalMetadataColumnId="Package\AuthorTable Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\AuthorTable Task\Derived Column.Outputs[Derived Column Output].Columns[end_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\AuthorTable Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbTimeStamp"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\AuthorTable Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\AuthorTable Task\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\AuthorTable Task\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\AuthorTable Task\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\AuthorTable Task\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\AuthorTable Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\AuthorTable Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\AuthorTable Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\AuthorTable Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\AuthorTable Task\Slowly Changing Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Slowly Changing Dimension"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Author_Name], [AuthorID_BK], [source_system_code],[start_date],[end_date] FROM [dbo].[Dim_Author]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere">[start_date] IS NOT NULL AND [end_date] IS NULL</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\AuthorTable Task\Slowly Changing Dimension.Connections[LookupConnection]"
+                  connectionManagerID="{84FD2AC2-FC06-4014-BA27-B3621C2BB815}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Gravity_booksOLAP]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[author_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="400"
+                      cachedName="author_name"
+                      externalMetadataColumnId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Author_Name]"
+                      lineageId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Output].Columns[author_name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[author_id]"
+                      cachedDataType="i4"
+                      cachedName="author_id"
+                      externalMetadataColumnId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[AuthorID_BK]"
+                      lineageId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Output].Columns[author_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[source_system_code]"
+                      cachedDataType="ui1"
+                      cachedName="source_system_code"
+                      externalMetadataColumnId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[source_system_code]"
+                      lineageId="Package\AuthorTable Task\SSC.Outputs[Derived Column Output].Columns[source_system_code]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Author_Name]"
+                      codePage="1256"
+                      dataType="str"
+                      length="400"
+                      name="Author_Name" />
+                    <externalMetadataColumn
+                      refId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[AuthorID_BK]"
+                      dataType="i4"
+                      name="AuthorID_BK" />
+                    <externalMetadataColumn
+                      refId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[source_system_code]"
+                      dataType="ui1"
+                      name="source_system_code" />
+                    <externalMetadataColumn
+                      refId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[start_date]"
+                      dataType="dbTimeStamp"
+                      name="start_date" />
+                    <externalMetadataColumn
+                      refId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[end_date]"
+                      dataType="dbTimeStamp"
+                      name="end_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\AuthorTable Task\Slowly Changing Dimension.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\AuthorTable Task\Slowly Changing Dimension.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\AuthorTable Task\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\AuthorTable Task\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\AuthorTable Task\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\AuthorTable Task\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\AuthorTable Task\SSC"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="SSC"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\AuthorTable Task\SSC.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\AuthorTable Task\SSC.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\AuthorTable Task\SSC.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\AuthorTable Task\SSC.Outputs[Derived Column Output].Columns[source_system_code]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\AuthorTable Task\SSC.Outputs[Derived Column Output].Columns[source_system_code]"
+                      name="source_system_code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_UI1)1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_UI1)1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\AuthorTable Task\SSC.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\AuthorTable Task\SSC.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\AuthorTable Task\SSC.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\AuthorTable Task\SSC.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\AuthorTable Task\SSC.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\AuthorTable Task\SSC.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\AuthorTable Task\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\AuthorTable Task\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\AuthorTable Task\Union All.Inputs[Union All Input 1].Columns[author_id]"
+                      cachedDataType="i4"
+                      cachedName="author_id"
+                      lineageId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Output].Columns[author_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\AuthorTable Task\Union All.Outputs[Union All Output 1].Columns[author_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\AuthorTable Task\Union All.Inputs[Union All Input 1].Columns[author_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="400"
+                      cachedName="author_name"
+                      lineageId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Output].Columns[author_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\AuthorTable Task\Union All.Outputs[Union All Output 1].Columns[author_name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\AuthorTable Task\Union All.Inputs[Union All Input 1].Columns[source_system_code]"
+                      cachedDataType="ui1"
+                      cachedName="source_system_code"
+                      lineageId="Package\AuthorTable Task\SSC.Outputs[Derived Column Output].Columns[source_system_code]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\AuthorTable Task\Union All.Outputs[Union All Output 1].Columns[source_system_code]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\AuthorTable Task\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\AuthorTable Task\Union All.Inputs[Union All Input 2].Columns[author_id]"
+                      cachedDataType="i4"
+                      cachedName="author_id"
+                      lineageId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Output].Columns[author_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\AuthorTable Task\Union All.Outputs[Union All Output 1].Columns[author_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\AuthorTable Task\Union All.Inputs[Union All Input 2].Columns[author_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="400"
+                      cachedName="author_name"
+                      lineageId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Output].Columns[author_name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\AuthorTable Task\Union All.Outputs[Union All Output 1].Columns[author_name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\AuthorTable Task\Union All.Inputs[Union All Input 2].Columns[source_system_code]"
+                      cachedDataType="ui1"
+                      cachedName="source_system_code"
+                      lineageId="Package\AuthorTable Task\SSC.Outputs[Derived Column Output].Columns[source_system_code]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\AuthorTable Task\Union All.Outputs[Union All Output 1].Columns[source_system_code]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\AuthorTable Task\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\AuthorTable Task\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\AuthorTable Task\Union All.Outputs[Union All Output 1].Columns[author_id]"
+                      dataType="i4"
+                      lineageId="Package\AuthorTable Task\Union All.Outputs[Union All Output 1].Columns[author_id]"
+                      name="author_id" />
+                    <outputColumn
+                      refId="Package\AuthorTable Task\Union All.Outputs[Union All Output 1].Columns[author_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="400"
+                      lineageId="Package\AuthorTable Task\Union All.Outputs[Union All Output 1].Columns[author_name]"
+                      name="author_name" />
+                    <outputColumn
+                      refId="Package\AuthorTable Task\Union All.Outputs[Union All Output 1].Columns[source_system_code]"
+                      dataType="ui1"
+                      lineageId="Package\AuthorTable Task\Union All.Outputs[Union All Output 1].Columns[source_system_code]"
+                      name="source_system_code" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\AuthorTable Task.Paths[Derived Column Output]"
+              endId="Package\AuthorTable Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="Derived Column Output"
+              startId="Package\AuthorTable Task\SSC.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\AuthorTable Task.Paths[Derived Column Output1]"
+              endId="Package\AuthorTable Task\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\AuthorTable Task\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\AuthorTable Task.Paths[Derived Column Output2]"
+              endId="Package\AuthorTable Task\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\AuthorTable Task\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\AuthorTable Task.Paths[Historical Attribute Inserts Output]"
+              endId="Package\AuthorTable Task\Derived Column.Inputs[Derived Column Input]"
+              name="Historical Attribute Inserts Output"
+              startId="Package\AuthorTable Task\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]" />
+            <path
+              refId="Package\AuthorTable Task.Paths[New Output]"
+              endId="Package\AuthorTable Task\Union All.Inputs[Union All Input 1]"
+              name="New Output"
+              startId="Package\AuthorTable Task\Slowly Changing Dimension.Outputs[New Output]" />
+            <path
+              refId="Package\AuthorTable Task.Paths[OLE DB Command Output]"
+              endId="Package\AuthorTable Task\Union All.Inputs[Union All Input 2]"
+              name="OLE DB Command Output"
+              startId="Package\AuthorTable Task\OLE DB Command.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\AuthorTable Task.Paths[OLE DB Source Output]"
+              endId="Package\AuthorTable Task\SSC.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\AuthorTable Task\AuthorOLTP Table.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\AuthorTable Task.Paths[Union All Output 1]"
+              endId="Package\AuthorTable Task\Derived Column 1.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\AuthorTable Task\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="160.8,41.6"
+          Id="Package\AuthorTable Task"
+          TopLeft="221.428571899935,61.1764705346117" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\AuthorTable Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\AuthorTable Task\Derived Column 1"
+          TopLeft="552.957143608283,92.7823529579329" />
+        <NodeLayout
+          Size="96.8,41.6"
+          Id="Package\AuthorTable Task\SSC"
+          TopLeft="258.928571591268,17.6294118431303" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\AuthorTable Task\Insert Destination"
+          TopLeft="471.528572006371,183.676470614376" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\AuthorTable Task\Derived Column"
+          TopLeft="145.357143129317,96.1823531288589" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\AuthorTable Task\Union All"
+          TopLeft="373.757143288972,124.594117964108" />
+        <NodeLayout
+          Size="164,41.6"
+          Id="Package\AuthorTable Task\AuthorOLTP Table"
+          TopLeft="38.8999997658389,13.9117646985091" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\AuthorTable Task\OLE DB Command"
+          TopLeft="131.214285981898,168.100000216505" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\AuthorTable Task\Slowly Changing Dimension"
+          TopLeft="401.900000585403,23.6411766327995" />
+        <EdgeLayout
+          Id="Package\AuthorTable Task.Paths[Union All Output 1]"
+          TopLeft="493.757143288972,145.394117964108">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="59.2000003193108,-31.8117650061752"
+              Start="0,0"
+              End="51.7000003193108,-31.8117650061752">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="25.6000001596554,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.6000001596554,0"
+                    Point2="29.6000001596554,0"
+                    Point3="29.6000001596554,-4" />
+                  <mssgle:LineSegment
+                    End="29.6000001596554,-27.8117650061752" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.6000001596554,-27.8117650061752"
+                    Point2="29.6000001596554,-31.8117650061752"
+                    Point3="33.6000001596554,-31.8117650061752" />
+                  <mssgle:LineSegment
+                    End="51.7000003193108,-31.8117650061752" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\AuthorTable Task.Paths[OLE DB Source Output]"
+          TopLeft="202.899999765839,36.5705882708197">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="56.0285718254289,0"
+              Start="0,0"
+              End="48.5285718254289,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="48.5285718254289,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\AuthorTable Task.Paths[OLE DB Command Output]"
+          TopLeft="296.014285981898,188.900000216505">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="77.742857307074,-43.505882252397"
+              Start="0,0"
+              End="70.242857307074,-43.505882252397">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34.871428653537,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34.871428653537,0"
+                    Point2="38.871428653537,0"
+                    Point3="38.871428653537,-4" />
+                  <mssgle:LineSegment
+                    End="38.871428653537,-39.505882252397" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.871428653537,-39.505882252397"
+                    Point2="38.871428653537,-43.505882252397"
+                    Point3="42.871428653537,-43.505882252397" />
+                  <mssgle:LineSegment
+                    End="70.242857307074,-43.505882252397" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\AuthorTable Task.Paths[New Output]"
+          TopLeft="539.233333918736,65.2411766327995">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-105.476190629764,59.3529413313086"
+              Start="0,0"
+              End="-105.476190629764,51.8529413313086">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.0130220653386" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.0130220653386"
+                    Point2="0,24.0130220653386"
+                    Point3="-4,24.0130220653386" />
+                  <mssgle:LineSegment
+                    End="-101.476190629764,24.0130220653386" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-101.476190629764,24.0130220653386"
+                    Point2="-105.476190629764,24.0130220653386"
+                    Point3="-105.476190629764,28.0130220653386" />
+                  <mssgle:LineSegment
+                    End="-105.476190629764,51.8529413313086" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-79.8294820336318,29.0130220653386,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\AuthorTable Task.Paths[Historical Attribute Inserts Output]"
+          TopLeft="472.566667252069,65.2411766327995">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-250.809524122752,30.9411764960594"
+              Start="0,0"
+              End="-250.809524122752,23.4411764960594">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.51818591061946" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.51818591061946"
+                    Point2="0,12.5181859106195"
+                    Point3="-4,12.5181859106195" />
+                  <mssgle:LineSegment
+                    End="-246.809524122752,12.5181859106195" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-246.809524122752,12.5181859106195"
+                    Point2="-250.809524122752,12.5181859106195"
+                    Point3="-250.809524122752,16.5181859106195" />
+                  <mssgle:LineSegment
+                    End="-250.809524122752,23.4411764960594" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-200.461148780126,17.5181859106195,150.1127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\AuthorTable Task.Paths[Derived Column Output2]"
+          TopLeft="634.157143608283,134.382352957933">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-81.4285716019119,49.2941176564431"
+              Start="0,0"
+              End="-81.4285716019119,41.7941176564431">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.6470588282216" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.6470588282216"
+                    Point2="0,24.6470588282216"
+                    Point3="-4,24.6470588282216" />
+                  <mssgle:LineSegment
+                    End="-77.4285716019119,24.6470588282216" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-77.4285716019119,24.6470588282216"
+                    Point2="-81.4285716019119,24.6470588282216"
+                    Point3="-81.4285716019119,28.6470588282216" />
+                  <mssgle:LineSegment
+                    End="-81.4285716019119,41.7941176564431" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\AuthorTable Task.Paths[Derived Column Output1]"
+          TopLeft="221.757143129317,137.782353128859">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-34.276190480752,30.3176470876462"
+              Start="0,0"
+              End="-34.276190480752,22.8176470876462">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.015678750159" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.015678750159"
+                    Point2="0,18.015678750159"
+                    Point3="-4,18.015678750159" />
+                  <mssgle:LineSegment
+                    End="-30.276190480752,18.015678750159" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-30.276190480752,18.015678750159"
+                    Point2="-34.276190480752,18.015678750159"
+                    Point3="-34.276190480752,22.015678750159" />
+                  <mssgle:LineSegment
+                    End="-34.276190480752,22.8176470876462" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\AuthorTable Task.Paths[Derived Column Output]"
+          TopLeft="355.728571591268,41.4352942379649">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="46.1714289941349,0"
+              Start="0,0"
+              End="38.6714289941349,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="38.6714289941349,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\AuthorTable Task\Insert Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\AuthorTable Task\AuthorOLTP Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\AuthorTable Task\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionID&gt;{84FD2AC2-FC06-4014-BA27-B3621C2BB815}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[Dim_Author]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;AuthorOLTP Table.Outputs[OLE DB Source Output].Columns[author_name]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Author_Name&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;AuthorOLTP Table.Outputs[OLE DB Source Output].Columns[author_id]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;AuthorID_BK&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;SSC.Outputs[Derived Column Output].Columns[source_system_code]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;source_system_code&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Union All&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn&gt;start_date&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;end_date&lt;/EndDateColumn&gt;
+  &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
